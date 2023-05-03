@@ -419,10 +419,6 @@ vim.opt.conceallevel = 0
 ==========================================
 --]]
 
-require('nvim-lsp-installer').setup {
-  ensure_installed = { 'clangd', 'lua_ls' },
-}
-
 --  This function gets run when an LSP connects to a particular buffer.
 local lsp_on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
@@ -463,6 +459,7 @@ lspconfig.clangd.setup {
     '--background-index',
     '-j=8',
     '--header-insertion=never',
+    '--compile-commands-dir=' .. os.getenv('HOME'),
     '--log=verbose',
   },
   log_level = vim.lsp.protocol.MessageType.Log,
@@ -481,7 +478,7 @@ lspconfig.lua_ls.setup {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT)
         version = 'LuaJIT',
-        -- version = 'Lua 5.4.4',
+        -- version = 'Lua 5.3.1',
         path = vim.split(package.path, ';'),
       },
       diagnostics = {
