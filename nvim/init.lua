@@ -98,86 +98,8 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 ==========================================
 --]]
 
--- Set highlight on search
-vim.o.hlsearch = true
-
--- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
--- highlight cur line
-vim.opt.cursorline = true
-
--- Open file on the same line
-vim.api.nvim_create_autocmd(
-  "BufUnload",
-  {pattern = '*', command = 'silent! mkview'}
-)
-vim.api.nvim_create_autocmd(
-  "BufRead",
-  {pattern = '*', command = 'silent! loadview'}
-)
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
-
--- Set / as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = '/'
-vim.g.maplocalleader = '/'
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
-
--- remove trailing spaces
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  {pattern = "*", command = '%s/\\s\\+$//e'}
-)
-
--- Disable arrow navigation
-vim.keymap.set({'n', 'v'}, '<Left>', ':echoe "Use h"<CR>')
-vim.keymap.set({'n', 'v'}, '<Right>', ':echoe "Use l"<CR>')
-vim.keymap.set({'n', 'v'}, '<Up>', ':echoe "Use k"<CR>')
-vim.keymap.set({'n', 'v'}, '<Down>', ':echoe "Use j"<CR>')
-
-vim.opt.spell = true
-vim.opt.spelllang = 'en'
-vim.opt.spelloptions = 'camel'
-
+require 'mappings'
+require 'common'
 
 -- TODO: fix diagnostic
 vim.diagnostic.config {
@@ -232,6 +154,12 @@ require("nvim-tree").setup({
   update_focused_file = {
     enable = true,
     update_root = true,
+  },
+  view = {
+    width = {
+      min = 10,
+      max = 40,
+    },
   },
 })
 vim.keymap.set('n', '<C-n>', api.tree.toggle, opts)
@@ -314,7 +242,6 @@ require('Comment').setup {
 }
 
 
-
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
 require('indent_blankline').setup {
@@ -382,7 +309,6 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').live_grep, { desc = '[S]earch word by [G]rep' })
 
 vim.keymap.set('n', '<leader>ch', require('telescope.builtin').command_history, { desc = 'Search in [C]ommand [H]istory' })
-
 
 
 -- [[ Configure Treesitter ]]
