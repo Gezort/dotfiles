@@ -66,13 +66,12 @@ vim.keymap.set('n', '<leader>?', tbuiltin.oldfiles, { desc = '[?] Find recently 
 vim.keymap.set('n', '<leader><space>', tbuiltin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  tbuiltin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', search_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').live_grep, { desc = '[S]earch word by [G]rep' })
-
-vim.keymap.set('n', '<leader>sch', require('telescope.builtin').command_history, { desc = '[S]earch in [C]ommand [H]istory' })
+vim.keymap.set('n', '<leader>sw', tbuiltin.live_grep, { desc = '[S]earch word by [G]rep' })
+vim.keymap.set('n', '<leader>sch', tbuiltin.command_history, { desc = '[S]earch in [C]ommand [H]istory' })
