@@ -45,6 +45,9 @@ local get_file_search_dir = function ()
   if string.find(cur_dir, "datacamp") then
     return string.match(cur_dir, '.*/datacamp/')
   end
+  if string.find(cur_dir, "mcfly") then
+    return string.match(cur_dir, ".*/mcfly/")
+  end
 
   return cur_dir .. "/.."
 end
