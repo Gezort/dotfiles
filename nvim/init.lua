@@ -1,8 +1,4 @@
 -- Install packer
--- Uncomment this for debugging
-utils = require('utils')
--- use: lua print(utils.dump(...))
-
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -34,9 +30,7 @@ require('packer').startup(function(use)
 
   use 'nvim-tree/nvim-tree.lua'
 
-
-
-  use 'jiangmiao/auto-pairs'              -- Brackets completion
+  use 'windwp/nvim-autopairs'              -- Brackets completion
   use 'williamboman/nvim-lsp-installer'   -- Automatically install language servers to stdpath
   use 'neovim/nvim-lspconfig'             -- Collection of configurations for built-in LSP client
   use {
@@ -121,6 +115,7 @@ require 'plugins.comment_nvim'
 require 'plugins.indent'
 require 'plugins.telescope'
 require 'plugins.treesitter'
+require 'plugins.autopairs'
 
 --[[
 ============================
