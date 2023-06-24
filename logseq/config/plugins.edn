@@ -1,0 +1,2 @@
+{:logseq-git {:version "v1.5.2", :repo "haydenull/logseq-plugin-git", :effect true, :theme false}
+ :logseq-dev-theme {:version "v1.26.17", :repo "pengx17/logseq-dev-theme", :effect false, :theme true}}
