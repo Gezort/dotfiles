@@ -1,4 +1,6 @@
 {:logseq-git {:version "v1.5.2", :repo "haydenull/logseq-plugin-git", :effect true, :theme false}
  :logseq-dev-theme {:version "v1.26.17", :repo "pengx17/logseq-dev-theme", :effect false, :theme true}
  :logseq-tabs {:version "v1.19.1", :repo "pengx17/logseq-plugin-tabs", :effect true, :theme false}
- :logseq-awesome-ui {:version "v2.2.6", :repo "yoyurec/logseq-awesome-ui", :effect true, :theme false}}
+ :logseq-awesome-ui {:version "v2.2.6", :repo "yoyurec/logseq-awesome-ui", :effect true, :theme false}
+ :logseq-file-manager {:version "v1.3.0", :repo "haydenull/logseq-plugin-file-manager", :effect true, :theme false}
+ :logseq-link-unlinked {:version "v1.4.5", :repo "usoonees/logseq-plugin-link-unlink", :effect true, :theme false}}

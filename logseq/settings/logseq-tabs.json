@@ -1,6 +1,6 @@
 {
   "tabs:toggle-pin": "",
-  "tabs:close": "mod+shift+w",
+  "tabs:close": "cmd+w",
   "tabs:select-next": "ctrl+tab",
   "tabs:select-prev": "ctrl+shift+tab",
   "tabs:inherit-custom-css": false,
